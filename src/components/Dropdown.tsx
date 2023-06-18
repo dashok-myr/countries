@@ -2,7 +2,7 @@ import Image from "next/image";
 import arrowWhiteIcon from "../../public/icons/arrow-down-white.png";
 import arrowBlackIcon from "../../public/icons/black-arrow.png";
 import { useState } from "react";
-import { useTheme } from 'next-themes'
+import { useTheme } from "next-themes";
 
 interface DropdownProps {
   values: string[];
@@ -18,19 +18,18 @@ export default function Dropdown({
   selectedValue,
 }: DropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme();
 
-  let iconSrc
+  let iconSrc;
 
   switch (resolvedTheme) {
-    case 'light':
-      iconSrc = arrowBlackIcon
-      break
-    case 'dark':
-      iconSrc = arrowWhiteIcon
-      break
+    case "light":
+      iconSrc = arrowBlackIcon;
+      break;
+    case "dark":
+      iconSrc = arrowWhiteIcon;
+      break;
   }
-
 
   return (
     <div className="relative inline-block text-left">
@@ -43,6 +42,7 @@ export default function Dropdown({
         >
           {label}
           <Image
+            // @ts-ignore
             src={iconSrc}
             className="inset-y-0 left-3 flex items-center pl-3 pointer-events-none h-4 w-6"
             alt="arrow-down"
@@ -59,7 +59,9 @@ export default function Dropdown({
               <button
                 key={value}
                 className={`block px-4 py-3 text-sm ${
-                  selectedValue === value ? "text-green-700" : "text-dark-blue dark:text-gray-200"
+                  selectedValue === value
+                    ? "text-green-700"
+                    : "text-dark-blue dark:text-gray-200"
                 }`}
                 onClick={() => {
                   onItemSelect(value);
