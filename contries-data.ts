@@ -1,4 +1,6 @@
-const COUNTRIES = [
+import { ICountry } from "@/app/ICountries";
+
+export const COUNTRIES: ICountry[] = [
   {
     name: "Afghanistan",
     topLevelDomain: [".af"],
@@ -528,6 +530,13 @@ const COUNTRIES = [
       svg: "https://flagcdn.com/aq.svg",
       png: "https://flagcdn.com/w320/aq.png",
     },
+    currencies: [
+      {
+        code: "XCD",
+        name: "none",
+        symbol: "$",
+      },
+    ],
     languages: [
       {
         iso639_1: "en",

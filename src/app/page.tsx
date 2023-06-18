@@ -1,9 +1,9 @@
+'use client'
 import Dropdown from "@/components/Dropdown";
 import { COUNTRIES } from "../../contries-data";
 import React, { useState } from "react";
 import InputSearch from "@/components/InputSearch";
 import CountryCard from "@/components/CountryCard";
-import Link from "next/link";
 
 const continents = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
@@ -28,21 +28,23 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 md:flex md:flex-row md:justify-between md:items-center md:mb-4">
         <InputSearch
           searchValue={searchValue}
           onSearch={(e) => setSearchValue(e.target.value)}
         />
-        <Dropdown
-          values={continents}
-          label="Filter by region"
-          onItemSelect={(value) => {
-            setSelectedContinent(value);
-          }}
-          selectedValue={selectedContinent}
-        />
+        <div className="self-end mb-4 md:mb-0 md:self-auto">
+          <Dropdown
+            values={continents}
+            label="Filter by region"
+            onItemSelect={(value) => {
+              setSelectedContinent(value);
+            }}
+            selectedValue={selectedContinent}
+          />
+        </div>
       </div>
-      <div className="items-center">
+      <div className="flex flex-col md:grid md:grid-cols-4 items-center gap-14 ">
         <CountryCard countries={countries} />
       </div>
     </div>
